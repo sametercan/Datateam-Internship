@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJs-Exercise</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+
+<body>
+
+    <div id="app">
+       <input type="text"v-model="age">
+        <p> Javascript : {{ age >= 18 ? 'Reşittir' : 'Değildir...' }}</p>
+        <p> Method : {{ ageWriter() }} </p>
+        <p> Computed : {{ageWriterComp}}</p>
+        <hr>
+        <p>{{sayi}}</p>
+        <button @click="sayi++">Sayi Arttir...</button>
+    
+    </div>
+
+    <script>
+
+        new Vue({
+            el: "#app",
+            data : {
+                age : 0,
+                sayi : 0
+            },
+            methods : {
+                ageWriter(v){
+                    return this.age >= 18 ? 'Reşittir' : 'Değildir...' 
+                }
+            },
+            computed : {
+                ageWriterComp(){
+                    console.log("Computed çalıştı..")
+                    return this.age >= 18 ? 'Reşittir' : 'Değildir..'
+                }
+            },
+            watch : {
+                age(newValue,oldValue2){
+                    console.log("New : " + newValue)
+                    console.log("Old : " + oldValue2)
+                }
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
